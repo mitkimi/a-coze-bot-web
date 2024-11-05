@@ -6,7 +6,8 @@
 
 ## 技术栈
 [前端](./vue-next/README.md)：vue3 + less + websocket
-[后段](./core/README.md)：nodejs + websocket
+
+[后端](./core/README.md)：nodejs + websocket
 
 ## 开源
 不知道基于啥开源反正就是开源的随便用。
