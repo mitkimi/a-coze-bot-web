@@ -1,8 +1,7 @@
 import { ref, onUnmounted } from 'vue';
 const config = {
   devBaseWebSocketUrl: 'ws://localhost:8800',
-  testBaseWebSocketUrl: '/api',
-  prodBaseWebSocketUrl: '/bot-api'
+  prodBaseWebSocketUrl: 'wss://coze-bot.mitkimi.com/bot-api/'
 }
 
 
@@ -15,7 +14,7 @@ interface SocketOptions {
 }
 
 class Socket {
-  url: string = (env.MODE == "development" ? config.devBaseWebSocketUrl : env.MODE == "test" ? config.testBaseWebSocketUrl : config.prodBaseWebSocketUrl)
+  url: string = (env.MODE == "development" ? config.devBaseWebSocketUrl : config.prodBaseWebSocketUrl)
   ws: WebSocket | null = null
   opts: SocketOptions
   reconnectAttempts: number = 0
