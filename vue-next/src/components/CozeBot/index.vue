@@ -175,6 +175,9 @@ const toBottom = () => {
         }
       }
       .dialog-item-ai {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
       }
       .dialog-item-user {
         display: flex;
@@ -269,6 +272,22 @@ const toBottom = () => {
       }
     }
   }
+  /* 设置滚动条的宽度和背景色 */
+  ::-webkit-scrollbar {
+    width: 10px; /* 对于垂直滚动条 */
+    background-color: #F2F2F2;
+  }
+  
+  /* 设置滚动条滑块的颜色 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #F2F2F2; /* 滚动条滑块颜色 */
+    border-radius: 6px; /* 滑块的圆角 */
+  }
+  
+  /* 设置滚动条滑块的背景色 */
+  ::-webkit-scrollbar-track {
+    background-color: #FFFFFF; /* 滚动条轨道颜色 */
+  }
 }
 // theme-dark
 .bot-assistant-dark {
@@ -303,6 +322,23 @@ const toBottom = () => {
         color: #FFFFFF;
       }
     }
+  }
+
+  /* 设置滚动条的宽度和背景色 */
+  ::-webkit-scrollbar {
+    width: 10px; /* 对于垂直滚动条 */
+    background-color: #131313;
+  }
+  
+  /* 设置滚动条滑块的颜色 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #131313; /* 滚动条滑块颜色 */
+    border-radius: 6px; /* 滑块的圆角 */
+  }
+  
+  /* 设置滚动条滑块的背景色 */
+  ::-webkit-scrollbar-track {
+    background-color: #000000; /* 滚动条轨道颜色 */
   }
 }
 </style>

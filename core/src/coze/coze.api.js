@@ -25,7 +25,7 @@ export const createCozeConversation = async (question = '') => {
     body.messages = messages
   }
   const res = await request(url, body, 'post', headers)
-  console.log('创建 coze 会话，conversation_id：',res.data.id)
+  // console.log('创建 coze 会话，conversation_id：',res.data.id)
   // console.log(res)
   const conversation_id = res.data.id
   return conversation_id
@@ -45,8 +45,6 @@ export const chat = async (user_id, content = '', conversation_id = '') => {
     auto_save_history: true
   }
   headers.Authorization = await getCozeToken()
-  console.log(body)
-  console.log('=======================')
   axios({
     method: 'post',
     url: encodeURI(url),
@@ -58,6 +56,7 @@ export const chat = async (user_id, content = '', conversation_id = '') => {
     response.data.on('data', chunk => {
       // const { data } = JSON.parse()
       const data = convertToJSON(chunk.toString())
+      // console.log(chunk.toString())
       if (data.event === 'conversation.message.delta' && data.data.type === 'answer') {
         wsMessage(user_id, data.data.content)
       }
@@ -72,11 +71,6 @@ export const chat = async (user_id, content = '', conversation_id = '') => {
   .catch((error) => {
     console.error(error)
   })
-  const chat_id = 111
-  return {
-    cozeChatId: chat_id,
-    // cozeConversationId: data.conversation_id
-  }
 }
 
 
@@ -120,23 +114,23 @@ function convertToJSON(inputData) {
   let currentData = null;
 
   lines.forEach(line => {
-      if (line.startsWith('event:')) {
-          if (currentEvent) {
-              currentEvent.data = currentData;
-              result.push(currentEvent);
-          }
-          const eventName = line.slice('event:'.length).trim();
-          currentEvent = {event: eventName};
-          currentData = {};
-      } else if (line.startsWith('data:')) {
-          const dataString = line.slice('data:'.length).trim();
-          currentData = JSON.parse(dataString);
+    if (line.startsWith('event:')) {
+      if (currentEvent) {
+        currentEvent.data = currentData;
+        result.push(currentEvent);
       }
+      const eventName = line.slice('event:'.length).trim();
+      currentEvent = {event: eventName};
+      currentData = {};
+    } else if (line.startsWith('data:')) {
+      const dataString = line.slice('data:'.length).trim();
+      currentData = JSON.parse(dataString);
+    }
   });
 
   if (currentEvent) {
-      currentEvent.data = currentData;
-      result.push(currentEvent);
+    currentEvent.data = currentData;
+    result.push(currentEvent);
   }
 
   return result[0]
