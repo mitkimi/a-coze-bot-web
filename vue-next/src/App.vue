@@ -24,7 +24,7 @@ const bots = [
   {
     id: 'tianhaotian',
     headImgUrl: 'https://oss.upyun.mitkimi.com/www/Frame%20127.png',
-    name: '田昊天',
+    name: 'AI 田昊天',
     bio: '我是 AI，不要相信我。'
   },
   {
