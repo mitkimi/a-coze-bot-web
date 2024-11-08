@@ -43,7 +43,7 @@ const handleSelectBot = (next: any) => {
   <div :class="['full-page', `page-${theme}`]">
     <img src="/favicon.png" style="width: 150px" />
     <h1>一个基于 Vue3 的 coze 的智能对话窗口</h1>
-    <div>Version 1.0.1</div>
+    <div>Version 1.0.2</div>
     <div class="selector theme-selector">
       <div
         :class="['selector-item', item.key === theme ? 'selector-item-active' : '']"
