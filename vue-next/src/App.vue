@@ -24,7 +24,7 @@ const bots = [
   {
     id: 'tianhaotian',
     headImgUrl: 'https://oss.upyun.mitkimi.com/www/Frame%20127.png',
-    name: '田昊天',
+    name: 'AI 田昊天',
     bio: '我是 AI，不要相信我。'
   },
   {
@@ -43,7 +43,7 @@ const handleSelectBot = (next: any) => {
   <div :class="['full-page', `page-${theme}`]">
     <img src="/favicon.png" style="width: 150px" />
     <h1>一个基于 Vue3 的 coze 的智能对话窗口</h1>
-    <div>Version 1.0.1</div>
+    <div>Version 1.0.2</div>
     <div class="selector theme-selector">
       <div
         :class="['selector-item', item.key === theme ? 'selector-item-active' : '']"

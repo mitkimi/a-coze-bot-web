@@ -36,6 +36,7 @@ on('message', (trunk: any) => {
       const obj = { role: 'ai', message: res.content }
       dialog.value.push(obj)
       isAnswering.value = false
+      // console.log(res.content)
     } else {
       answeringVal.value += res.content
     }
@@ -85,10 +86,12 @@ const toBottom = () => {
       </div>
       <div class="bot-dialog-container" ref="dialogRef">
         <div :class="`dialog-item dialog-item-${item.role}`" v-for="item,index in dialog">
-          <div class="message">{{ item.message }}</div>
+          <div class="message">
+            <div v-html="item.message.replace(/\n/g, '<br>')"></div>
+          </div>
         </div>
         <div v-if="isAnswering" class="dialog-item dialog-item-ai">
-          <div class="message">{{ answeringVal }}...</div>
+          <div class="message"><span v-html="answeringVal.replace(/\n/g, '<br>')"></span>...</div>
         </div>
       </div>
       <div class="bot-input-container">
@@ -172,6 +175,7 @@ const toBottom = () => {
           border-radius: 10px;
           font-size: 12px;
           max-width: 80%;
+          word-wrap: break-word;
         }
       }
       .dialog-item-ai {
