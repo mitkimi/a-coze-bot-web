@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import CozeBot from './components/CozeBot/index.vue'
+import SingleSelector from './components/single-selector.vue';
+import CozeBot from './lib/CozeBot/index.vue'
 const theme = ref('light')
 const bot: any = ref(
   {
@@ -17,7 +18,7 @@ const handleSelectTheme = (key: string) => {
 
 const modes = [
   { name: '浅色模式', key: 'light' },
-  { name: '深色模式', key: 'dark' },
+  { name: '深色模式', key: 'dark' }
 ]
 
 const bots = [
@@ -42,16 +43,10 @@ const handleSelectBot = (next: any) => {
 <template>
   <div :class="['full-page', `page-${theme}`]">
     <img src="/favicon.png" style="width: 150px" />
-    <h1>一个基于 Vue3 的 coze 的智能对话窗口</h1>
-    <div>Version 1.0.2</div>
+    <h1 style="text-align: center;">一个基于 Vue3 的 coze 的智能对话窗口</h1>
+    <div>Version 1.0.3</div>
     <div class="selector theme-selector">
-      <div
-        :class="['selector-item', item.key === theme ? 'selector-item-active' : '']"
-        v-for="item in modes" :key="item.key"
-        @click="handleSelectTheme(item.key)">
-        <div>{{ item.name }}</div>
-        <div>theme={{ item.key }}</div>
-      </div>
+      <single-selector :options="modes" @change="handleSelectTheme"></single-selector>
     </div>
     <div>可以自定义助手名字、头像和个性签名</div>
     <div class="selector">
@@ -85,6 +80,7 @@ const handleSelectBot = (next: any) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all, 300ms;
   .selector {
     display: flex;
     flex-direction: row;

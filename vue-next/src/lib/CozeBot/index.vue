@@ -91,7 +91,10 @@ const toBottom = () => {
           </div>
         </div>
         <div v-if="isAnswering" class="dialog-item dialog-item-ai">
-          <div class="message"><span v-html="answeringVal.replace(/\n/g, '<br>')"></span>...</div>
+          <div class="message">
+            <span v-html="answeringVal.replace(/\n/g, '<br>')"></span>
+            <img :class="['loading', answeringVal.length > 0 ? 'loading-out' : '']" src="./assets/ball-loading.svg" />
+          </div>
         </div>
       </div>
       <div class="bot-input-container">
@@ -176,6 +179,16 @@ const toBottom = () => {
           font-size: 12px;
           max-width: 80%;
           word-wrap: break-word;
+          position: relative;
+          .loading {
+            width: 20px;
+            height: 20px;
+          }
+          .loading-out {
+            position: absolute;
+            bottom: 0;
+            right: -25px;
+          }
         }
       }
       .dialog-item-ai {
