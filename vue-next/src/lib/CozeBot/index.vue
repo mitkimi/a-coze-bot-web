@@ -115,6 +115,7 @@ const toBottom = () => {
   position: fixed;
   bottom: 40px;
   right: 40px;
+  z-index: 5;
   .bot-assistant-container {
     box-sizing: border-box;
     width: 300px;
