@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-const { theme, show, assistant } = defineProps({
+import { onMounted, ref, watch } from 'vue'
+const { theme, show, assistant, greating } = defineProps({
   theme: { type: String, default: 'light' },
+  greating: { type: String || null, default: null },
   show: { type: Boolean, default: true },
   placeholder: { type: String, default: '' },
   assistant: { type: Object, default: { name: 'Eric', bio: 'I\'m your AI assistant.', headImgUrl: 'https://oss.upyun.mitkimi.com/common/mitkimi.default.png' } }
@@ -9,13 +10,27 @@ const { theme, show, assistant } = defineProps({
 const dialogRef = ref()
 const isBotShow = ref(show)
 const isBotOpen = ref(false)
+let isFirstOpen = true
 const dialog: any = ref([])
 const inputVal = ref('')
 const answeringVal = ref('')
 const isAnswering = ref(false)
 const handleOpenToggle = () => {
+  if (isFirstOpen) {
+    isFirstOpen = false
+    greating && (() => {
+      isAnswering.value = true
+      setTimeout(autoGreating, 1500)
+    })()
+  }
+  toBottom()
   isBotOpen.value = !isBotOpen.value
 }
+const autoGreating = () => {
+  isAnswering.value = false
+  dialog.value.push({ role: 'ai', message: greating })
+}
+
 import { useSocket } from './utils/socket.utils'
 const roomId = ref('')
 const userId = ref('')
@@ -110,7 +125,7 @@ const toBottom = () => {
     </div>
   </div>
 </template>
-<style lang="less" scoped>
+<style lang="less">
 .bot-assistant {
   position: fixed;
   bottom: 40px;
