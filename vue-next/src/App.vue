@@ -25,14 +25,16 @@ const bots = [
   {
     id: 'tianhaotian',
     headImgUrl: 'https://oss.upyun.mitkimi.com/www/Frame%20127.png',
-    name: 'AI 田昊天',
-    bio: '我是 AI，不要相信我。'
+    name: '田昊天',
+    bio: '我是 AI，不要相信我。',
+    greating: '你好呀，有什么可以帮你的呢？'
   },
   {
     id: 'kimi',
     headImgUrl: 'https://oss.upyun.mitkimi.com/www/IMG_0072.jpg',
     name: 'Kimi',
-    bio: 'My name is Kimi.'
+    bio: 'My name is Kimi.',
+    greating: 'Hi, my name is Kimi Tin, In fact I am \'田昊天\' too.'
   }
 ]
 const handleSelectBot = (next: any) => {
@@ -49,9 +51,9 @@ const handleSelectBot = (next: any) => {
       <single-selector :options="modes" @change="handleSelectTheme"></single-selector>
     </div>
     <div style="text-align: center;">
-      <p>可以自定义助手名字、头像和个性签名</p>
-      <p>可以自定义文本框提示文字</p>
-      <p>还可以设置打招呼内容</p>
+      可以自定义助手名字、头像和个性签名<br />
+      可以自定义文本框提示文字<br />
+      还可以设置打招呼内容
     </div>
     <div class="selector">
       <div
@@ -73,7 +75,7 @@ const handleSelectBot = (next: any) => {
     <div>&copy; <a href="https://www.mitkimi.com" target="_blank">田昊天</a> All Rights Reserved.</div>
     <div><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">京ICP备15063748号-3</a></div>
   </div>
-  <coze-bot :theme="theme" :assistant="bot" greating="Hi, How can I help you today?" placeholder="Say something." />
+  <coze-bot :theme="theme" :assistant="bot" :greating="bot.greating || 'Hi, How can I help you today?'" placeholder="Say something." />
 </template>
 
 <style lang="less" scoped>
@@ -100,7 +102,7 @@ const handleSelectBot = (next: any) => {
       align-items: center;
       border-radius: 20px;
       cursor: pointer;
-      height: 80px;
+      height: 40px;
     }
     .selector-item-active {
       border: 1px solid #1B80DD;

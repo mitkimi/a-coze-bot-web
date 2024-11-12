@@ -1,7 +1,5 @@
 # 一个基于 Vue3 的 coze 智能对话窗口
 
-> Version 1.0.1
-
 [官方网站](https://coze-bot.mitkimi.com)
 
 ## 技术栈
