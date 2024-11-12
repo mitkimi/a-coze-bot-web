@@ -8,9 +8,11 @@
 
 ## Props
 | 字段 | 含义 | 数据类型 | 可选值 | 默认值 | 备注 |
+| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
 | theme | 主题 | String | light/dark | light |  |
 | show | 是否显示 | Boolean | - | true |  |
 | placeholder | 输入框的提示文字 | String | - | - |  |
+| greating | 主动打招呼的文字 | String/null | - | - | 可以不填 |
 | assistant | AI 助理信息 | Object | - | 见下表 |  |
 
 ```json
