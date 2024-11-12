@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SingleSelector from './components/single-selector.vue';
+import SingleSelector from './components/single-selector.vue'
 import CozeBot from './lib/CozeBot/index.vue'
 const theme = ref('light')
 const bot: any = ref(
@@ -43,12 +43,16 @@ const handleSelectBot = (next: any) => {
 <template>
   <div :class="['full-page', `page-${theme}`]">
     <img src="/favicon.png" style="width: 150px" />
-    <h1 style="text-align: center;">一个基于 Vue3 的 coze 的智能对话窗口</h1>
-    <div>Version 1.0.3</div>
+    <h1 style="text-align: center; padding: 0 15px;">一个基于 Vue3 的 coze 的智能对话窗口</h1>
+    <div>Version 1.0.4</div>
     <div class="selector theme-selector">
       <single-selector :options="modes" @change="handleSelectTheme"></single-selector>
     </div>
-    <div>可以自定义助手名字、头像和个性签名</div>
+    <div style="text-align: center;">
+      <p>可以自定义助手名字、头像和个性签名</p>
+      <p>可以自定义文本框提示文字</p>
+      <p>还可以设置打招呼内容</p>
+    </div>
     <div class="selector">
       <div
         :class="['selector-item', item.id === bot.id ? 'selector-item-active' : '']"
@@ -69,7 +73,7 @@ const handleSelectBot = (next: any) => {
     <div>&copy; <a href="https://www.mitkimi.com" target="_blank">田昊天</a> All Rights Reserved.</div>
     <div><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">京ICP备15063748号-3</a></div>
   </div>
-  <coze-bot :theme="theme" :assistant="bot" placeholder="Say something." />
+  <coze-bot :theme="theme" :assistant="bot" greating="Hi, How can I help you today?" placeholder="Say something." />
 </template>
 
 <style lang="less" scoped>

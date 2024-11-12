@@ -118,7 +118,7 @@ class Socket {
 
 export function useSocket(opts?: SocketOptions) {
   const socket = new Socket(opts)
-  console.log('socket', socket)
+  // console.log('socket', socket)
   onUnmounted(() => {
     socket.off('open')
     socket.off('message')
