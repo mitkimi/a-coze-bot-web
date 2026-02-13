@@ -1,0 +1,86 @@
+.page-header {
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.page-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.page-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.page-logo-image {
+  height: 32px;
+  width: auto;
+}
+
+.page-logo-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.page-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.page-nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.page-nav-link:hover {
+  color: var(--primary-color);
+}
+
+.page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.page-header-user:hover {
+  background: var(--hover-bg);
+}
+
+.page-user-avatar {
+  background: var(--primary-color);
+}
+
+.page-user-name {
+  font-size: 14px;
+  color: var(--text-color);
+}
